@@ -3,7 +3,7 @@ import BloodProductOrderMessageSteppersMinimal from './components/BloodProductOr
 
 export default [
   {
-    path: '/blood-bank/blood-product-order',
+    path: '/blood-bank/blood-product-order/add',
     name: 'btx.omb',
     component: BloodProductOrderMessageSteppersMinimal,
   }];

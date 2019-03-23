@@ -1,0 +1,219 @@
+{
+  "suggestedPlaces": [
+    {
+      "id": "21a0b251c9b8392186142c798263e289fe45b4aa",
+      "name": "Hemoes",
+      "formatted_address": "Av. Mal. Campos, 1468 - Nazareth, Vitória - ES, 29047-100",
+      "address_components" : [
+         {
+            "long_name" : "1468",
+            "short_name" : "1468",
+            "types" : [ "street_number" ]
+         },
+         {
+            "long_name" : "Avenida Mal. Campos",
+            "short_name" : "Av. Mal. Campos",
+            "types" : [ "route" ]
+         },
+         {
+            "long_name" : "Nazareth",
+            "short_name" : "Nazareth",
+            "types" : [ "locality", "political" ]
+         },
+         {
+            "long_name" : "Vitória",
+            "short_name" : "Vitória",
+            "types" : [ "administrative_area_level_2", "political" ]
+         },
+         {
+            "long_name" : "Espírito Santo",
+            "short_name" : "ES",
+            "types" : [ "administrative_area_level_1", "political" ]
+         },
+         {
+            "long_name" : "Brasil",
+            "short_name" : "BR",
+            "types" : [ "country", "political" ]
+         },
+         {
+            "long_name" : "29047-100",
+            "short_name" : "29047-100",
+            "types" : [ "postal_code" ]
+         }
+      ],
+      "international_phone_number": "+55 27 3218-9200"
+    },
+    {
+      "id": "21a0b251c9b83926142c263e289fe45b4aa",
+      "name": "Hemocentro de Linhares",
+      "formatted_address": "Av. João Felipe Calmom, 174-298 - Centro, Linhares - ES, 29901-627",
+      "international_phone_number": "+55 27 3264-6000",
+      "address_components" : [
+         {
+            "long_name" : "174-298",
+            "short_name" : "174-298",
+            "types" : [ "street_number" ]
+         },
+         {
+            "long_name" : "Av. João Felipe Calmom",
+            "short_name" : "Av. João Felipe Calmom",
+            "types" : [ "route" ]
+         },
+         {
+            "long_name" : "Centro",
+            "short_name" : "Centro",
+            "types" : [ "locality", "political" ]
+         },
+         {
+            "long_name" : "Linhares",
+            "short_name" : "Linhares",
+            "types" : [ "administrative_area_level_2", "political" ]
+         },
+         {
+            "long_name" : "Espírito Santo",
+            "short_name" : "ES",
+            "types" : [ "administrative_area_level_1", "political" ]
+         },
+         {
+            "long_name" : "Brasil",
+            "short_name" : "BR",
+            "types" : [ "country", "political" ]
+         },
+         {
+            "long_name" : "29047-100",
+            "short_name" : "29047-100",
+            "types" : [ "postal_code" ]
+         }
+      ]
+    },
+    {
+      "id": "21a0b2c9b8392c793e289fe45b4aa",
+      "name": "Hospital Estadual Dório Silva",
+      "formatted_address": "Av. Eudes Scherrer de Souza, S/N - Parque Res. Laranjeiras, Serra - ES, 29175-680",
+      "international_phone_number": "+55 27 3218-9200",
+      "address_components" : [
+         {
+            "long_name" : "S/N",
+            "short_name" : "S/N",
+            "types" : [ "street_number" ]
+         },
+         {
+            "long_name" : "Av. Eudes Scherrer de Souza",
+            "short_name" : "Av. Eudes Scherrer de Souza",
+            "types" : [ "route" ]
+         },
+         {
+            "long_name" : "Parque Res. Laranjeiras",
+            "short_name" : "Parque Res. Laranjeiras",
+            "types" : [ "locality", "political" ]
+         },
+         {
+            "long_name" : "Serra",
+            "short_name" : "Serra",
+            "types" : [ "administrative_area_level_2", "political" ]
+         },
+         {
+            "long_name" : "Espírito Santo",
+            "short_name" : "ES",
+            "types" : [ "administrative_area_level_1", "political" ]
+         },
+         {
+            "long_name" : "Brasil",
+            "short_name" : "BR",
+            "types" : [ "country", "political" ]
+         },
+         {
+            "long_name" : "29175-680",
+            "short_name" : "29175-680",
+            "types" : [ "postal_code" ]
+         }
+      ]
+    },
+    {
+      "id": "21a0b9b142c798263e289fe45b4aa",
+      "name": "Hemocentro Regional de Colatina",
+      "formatted_address": "R. Cassiano Castelo, 276 - Centro, Colatina - ES, 29700-060",
+      "international_phone_number": "+55 27 3717-2801",
+      "address_components" : [
+         {
+            "long_name" : "276",
+            "short_name" : "1468",
+            "types" : [ "street_number" ]
+         },
+         {
+            "long_name" : "R. Cassiano Castelo",
+            "short_name" : "R. Cassiano Castelo",
+            "types" : [ "route" ]
+         },
+         {
+            "long_name" : "Centro",
+            "short_name" : "Centro",
+            "types" : [ "locality", "political" ]
+         },
+         {
+            "long_name" : "Colatina",
+            "short_name" : "Colatina",
+            "types" : [ "administrative_area_level_2", "political" ]
+         },
+         {
+            "long_name" : "Espírito Santo",
+            "short_name" : "ES",
+            "types" : [ "administrative_area_level_1", "political" ]
+         },
+         {
+            "long_name" : "Brasil",
+            "short_name" : "BR",
+            "types" : [ "country", "political" ]
+         },
+         {
+            "long_name" : "29700-060",
+            "short_name" : "29700-060",
+            "types" : [ "postal_code" ]
+         }
+      ]
+    },
+    {
+      "id": "21a0b9b839c798263e289fe45b4aa",
+      "name": "Hemocentro Regional de Colatina",
+      "formatted_address": "Rodovia Otovarino Duarte Santos, Km 02 - Parque Washington, São Mateus - ES",
+      "international_phone_number": "+55 27 3717-2801",
+      "address_components" : [
+         {
+            "long_name" : "Km 02",
+            "short_name" : "Km 02",
+            "types" : [ "street_number" ]
+         },
+         {
+            "long_name" : "Rodovia Otovarino Duarte Santos",
+            "short_name" : "Rodovia Otovarino Duarte Santos",
+            "types" : [ "route" ]
+         },
+         {
+            "long_name" : "Parque Washington",
+            "short_name" : "Parque Washington",
+            "types" : [ "locality", "political" ]
+         },
+         {
+            "long_name" : "São Mateus",
+            "short_name" : "São Mateus",
+            "types" : [ "administrative_area_level_2", "political" ]
+         },
+         {
+            "long_name" : "Espírito Santo",
+            "short_name" : "ES",
+            "types" : [ "administrative_area_level_1", "political" ]
+         },
+         {
+            "long_name" : "Brasil",
+            "short_name" : "BR",
+            "types" : [ "country", "political" ]
+         },
+         {
+            "long_name" : "",
+            "short_name" : "",
+            "types" : [ "postal_code" ]
+         }
+      ]
+    }
+  ]
+}
