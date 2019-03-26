@@ -12,9 +12,11 @@
   },
   "dependencies": {
     "@mdi/font": "^2.6.95",
+    "axios": "^0.18.0",
     "register-service-worker": "^1.6.2",
     "roboto-fontface": "*",
     "vue": "^2.6.6",
+    "vue-axios": "^2.1.4",
     "vue-class-component": "^6.0.0",
     "vue-property-decorator": "^7.0.0",
     "vue-router": "^3.0.1",

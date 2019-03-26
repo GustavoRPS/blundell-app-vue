@@ -18,17 +18,16 @@
                     :size="200"
                     color="lighten-4"
                   >
-                    <img :src="form.recipient_image.length ? form.recipient_image[0].url : 'https://www.gravatar.com/avatar/default?s=200&r=pg&d=mm'" alt="avatar">
+                    <img :src="data.avatar.length ? data.avatar[0].url : 'https://www.gravatar.com/avatar/default?s=200&r=pg&d=mm'" alt="avatar">
                   </v-avatar>
 
                   <v-btn>
                     <file-upload
-                      v-model="form.recipient_image"
+                      v-model="data.avatar"
                       ref="upload"
                       name="image"
                       extensions="gif,jpg,jpeg,png,webp"
                       accept="image/*"
-                      post-action="/upload/post"
                       :drop="!edit"
                       @input-filter="inputFilter"
                       @input-file="inputFile"
@@ -78,16 +77,17 @@
             v-model="data.place"
             :items="suggestedPlaces"
             :label="`Local de Doação`"
+            @change="selectPlace"
             prepend-icon="mdi-map-marker"
             item-text="name"
-            item-value="formatted_address"
+            item-value="address_components"
             auto-select-first
           >
           </v-autocomplete>
           
           <v-list three-line>
             <v-subheader>
-              Sugestões de Locais {{data.place}}
+              Sugestões de Locais
             </v-subheader>
             <template v-for="(place, index) in suggestedPlaces">
               <v-list-tile 
@@ -102,6 +102,31 @@
               </v-list-tile>
             </template>
           </v-list>
+        </v-stepper-content>
+
+        <v-stepper-content step="3">
+          <v-container fluid>
+            <v-layout column align-center justify-center> 
+              <v-flex>
+                <v-progress-circular
+                  :size="100"
+                  color="red"
+                  indeterminate
+                ></v-progress-circular>
+              </v-flex>
+
+              <v-img src="https://picsum.photos/1200/800?random" aspect-ratio="2.7" contain width="800px"/>
+              
+              <v-flex>
+                <v-btn
+                  color="blue-grey"
+                  class="white--text"
+                >
+                  Compartilhar
+                </v-btn>
+              </v-flex>
+            </v-layout>
+          </v-container>
         </v-stepper-content>
       </v-stepper-items>
 
@@ -155,15 +180,23 @@
     components: {
       FileUpload,
     },
+    props: {
+      apiUrl: {
+        type: String,
+        default: 'https://hematopy-dev-gustavorps.herokuapp.com/api/v1/donations',
+      }
+    },
     data: () => ({
       edit: false,
       suggestedPlaces: mock.suggestedPlaces,
-      step: 2,
+      step: 3,
       data: {
         place: null,
+        avatar: [],
       },
       form: {
-        recipient_image: [],
+        type: 'BloodDonation',
+        recipient_image: null,
         recipient_name: null,
         recipient_gender: null,
         recipient_bloodType: null,
@@ -179,6 +212,9 @@
         if (!newFile && oldFile) {
           this.edit = false
         }
+
+        console.log(newFile)
+        this.form.recipient_image = newFile.file
       },
       inputFilter(newFile, oldFile, prevent) {
         if (newFile && !oldFile) {
@@ -195,11 +231,17 @@
           }
         }
       },
+      selectPlace(address_components) {
+        let parsedPlace = parsePlaceAddress({...{
+          address_components: address_components
+        }})
+        this.form = {...this.form, ...parsedPlace}
+        this.step++
+      },
       selectSuggestedPlace(place) {
-        // this.step++
         let parsedPlace = parsePlaceAddress(place)
-
-        alert(JSON.stringify(parsedPlace))
+        this.form = {...this.form, ...parsedPlace}
+        this.step++
       },
       goToStep(n) {
         this.step = n
@@ -208,8 +250,24 @@
       }
     },
     watch: {
-      'data.place': (newValue, oldValue) => {
-        // alert(newValue)
+      'step': function(newValue, oldValue) {
+        if (newValue === 3) {
+          let formData = new FormData();
+          Object.keys(this.form).forEach(key => formData.append(key, this.form[key]));
+          
+          let config = {
+            headers: { 'content-type': 'multipart/form-data' }
+          }
+          console.log(formData)
+          console.log(this.form)
+          this.$http.post(this.apiUrl, formData, config)
+            .then((response) => {
+              console.log(response.data)
+            })
+            .catch(function (error) {
+              console.log(error);
+            })
+        }
       },
       edit(value) {
         if (value) {
