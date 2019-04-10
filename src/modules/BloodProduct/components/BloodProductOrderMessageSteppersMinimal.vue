@@ -63,7 +63,7 @@
                 </v-radio-group>
                 
                 <v-select
-                  v-model="form.recipient_bloodType"
+                  v-model="form.recipient_bloodtype"
                   :items="['A-','A+','B-','B+','AB-','AB+','O-','O+',]"
                   label="Tipo Sanguineo"
                 ></v-select>
@@ -107,7 +107,7 @@
         <v-stepper-content step="3">
           <v-container fluid>
             <v-layout column align-center justify-center> 
-              <v-flex>
+              <v-flex v-if="loading">
                 <v-progress-circular
                   :size="100"
                   color="red"
@@ -115,15 +115,29 @@
                 ></v-progress-circular>
               </v-flex>
 
-              <v-img src="https://picsum.photos/1200/800?random" aspect-ratio="2.7" contain width="800px"/>
+              <v-img v-if="!loading" :src="response.image" aspect-ratio="2.7" contain width="100%"/>
               
-              <v-flex>
-                <v-btn
-                  color="blue-grey"
-                  class="white--text"
-                >
-                  Compartilhar
-                </v-btn>
+                <v-menu offset-y>
+                  <template v-slot:activator="{ on }">
+                    <v-btn
+                      large
+                      color="blue-grey"
+                      class="white--text"
+                      v-on="on"
+                    >
+                      Compartilhar
+                    </v-btn>
+                  </template>
+
+                  <v-list>
+                    <v-list-tile>
+                      <v-list-tile-title>
+                        Facebook
+                      </v-list-tile-title>
+                    </v-list-tile>
+                  </v-list>
+                </v-menu>
+              <v-flex v-if="!loading">
               </v-flex>
             </v-layout>
           </v-container>
@@ -156,6 +170,7 @@
 <script>
   import FileUpload from 'vue-upload-component'
 
+
   import mock from './mock.json'
 
   let parsePlaceAddress = (place) => {
@@ -183,23 +198,25 @@
     props: {
       apiUrl: {
         type: String,
-        default: 'https://hematopy-dev-gustavorps.herokuapp.com/api/v1/donations',
+        default: `${process.env.VUE_APP_BLUNDELL_BLOOD_PRODUCT_ROOT_API}/api/v1/donations`,
       }
     },
     data: () => ({
       edit: false,
       suggestedPlaces: mock.suggestedPlaces,
       step: 3,
+      response: {"image":"http:\/\/localhost:8000\/images\/banner-blood-donation-AalJelVUFVKd4g.png"},
       data: {
         place: null,
         avatar: [],
       },
+      loading: false,
       form: {
         type: 'BloodDonation',
         recipient_image: null,
         recipient_name: null,
         recipient_gender: null,
-        recipient_bloodType: null,
+        recipient_bloodtype: null,
       }
     }),
     methods: {
@@ -213,7 +230,6 @@
           this.edit = false
         }
 
-        console.log(newFile)
         this.form.recipient_image = newFile.file
       },
       inputFilter(newFile, oldFile, prevent) {
@@ -252,20 +268,22 @@
     watch: {
       'step': function(newValue, oldValue) {
         if (newValue === 3) {
+          this.loading = true
+
           let formData = new FormData();
           Object.keys(this.form).forEach(key => formData.append(key, this.form[key]));
           
           let config = {
             headers: { 'content-type': 'multipart/form-data' }
           }
-          console.log(formData)
-          console.log(this.form)
+
           this.$http.post(this.apiUrl, formData, config)
             .then((response) => {
-              console.log(response.data)
+              this.response = response.data
+              this.loading = false
             })
             .catch(function (error) {
-              console.log(error);
+              throw error
             })
         }
       },
